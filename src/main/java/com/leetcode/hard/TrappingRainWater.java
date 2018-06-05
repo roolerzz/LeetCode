@@ -2,6 +2,8 @@ package com.leetcode.hard;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Stack;
+
 //https://leetcode.com/problems/trapping-rain-water/description/
 public class TrappingRainWater {
 
@@ -12,41 +14,25 @@ public class TrappingRainWater {
 	}
 	
 	  public int trap(int[] height) {
-		    int sum = 0;
-		  //  int size = height.length;
-		    for (int i = 1; i < height.length - 1; i++) {
-		        int max_left = 0, max_right = 0;
-		        for (int j = i; j >= 0; j--) { //Search the left part for max bar size
-		            max_left = Math.max(max_left, height[j]);
-		        }
-		        for (int j = i; j < height.length ; j++) { //Search the right part for max bar size
-		            max_right = Math.max(max_right, height[j]);
-		        }
-		        sum += Math.min(max_left, max_right) - height[i];
-		    }
-		    return sum;
-			  // My initial solution which Didn't take into account few cases, thus failed.
-		    /*	        int sum = 0;
-		    	        if(height == null || height.length < 3)
-		    	            return sum;
-		    	     
-		    	        for(int i = 0 ; i < height.length-2; i++){
-		    	            if(height[i] == 0) continue;
-		    	        	int candidate = height[i];
-		    	            int potentialSum = 0;
-		    	            int j = i+1;
-		    	            while(j < height.length && height[j] < candidate){
-		    	                potentialSum += candidate-height[j];
-		    	                j++;
-		    	            }
-		    	            if(j < height.length && height[j] >= candidate){
-		    	                sum += potentialSum;
-		    	                i = j-1;
-		    	            }
-		    	            //else
-		    	             //   i++;
-		    	        }
-		    	        return sum;*/
+		  // Instead of calculating the max_left and max_right for each array index everytime, lets just precompute that using 2 aux arrays in 1 pass. O(N). 
+		  // Now the same approach works in O(N) time and O(N) aux space. For each entry in the array, calculate the amount of water it traps by finding the Max bar length(greater than itself) on either
+		  // side, and the water it can hold is minimum of those minus its current height. 
+		  if(height == null || height.length <3) return 0;
+		  int sum = 0;
+		  Stack<Integer> st = new Stack<>();
+		  int current = 0;
+		  while(current < height.length) {
+			  while(!st.isEmpty() && height[current] > height[st.peek()]) {
+				  int top = st.pop();
+				  if(st.isEmpty()) // Nothing to bound the above element.
+					  break;
+				  int distance = current-st.peek()-1;
+				  int bounded_height = Math.min(height[current], height[st.peek()]) - height[top];
+				  sum += distance * bounded_height;
+			  }
+			  st.push(current++);
+		  }
+		  return sum;
 	    }
 
 }
