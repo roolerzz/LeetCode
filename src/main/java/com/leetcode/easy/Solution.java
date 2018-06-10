@@ -1,5 +1,12 @@
 package com.leetcode.easy;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.ByteOrder;
+
 /*
  * To execute Java, please define "static void main" on a class
  * named Solution.
@@ -9,70 +16,55 @@ package com.leetcode.easy;
 
 class Solution {
   public static void main(String[] args) {
-
-    String[] arr = {"one","two","three","four"};
-   
-    if(ifCombines(arr,"oneone"))
-    System.out.println("oneone");
-    if(ifCombines(arr,"oneonc"))
-    System.out.println("oneonc");
-    if(ifCombines(arr,""))
-    System.out.println("");
-    
-    if(ifCombines(arr,"fouroneone"))
-    System.out.println("fouroneone");
-    
-  }
-
-private static boolean ifCombines(String[] arr, String target){
-    return ifCombinesRecursively(arr,target);
-}
-
-private static boolean ifCombinesRecursively(String[] arr, String target){
-      
-  if(target.equals("")) return true;
-
-   boolean res = false;
-  for(int i = 0 ; i < arr.length ; i++){
-    if(target.startsWith(arr[i]))
-       res = ifCombinesRecursively(arr, target.substring(arr[i].length()));
-    if(res)
-       break;
-}
-  
-  return res; 
-      
+	  System.out.println(ByteOrder.nativeOrder());
+   /* Solution solution = new Solution();
+    if(args == null || args.length !=2) throw new IllegalArgumentException("Invalid arguments to the program");
+    System.out.println(solution.myGrep(args[0], args[1]));*/
  }
   
-}
-/* 
-Your previous Plain Text content is preserved below:
-
-Given a set of strings, e.g. {"on", “one”, “cat”, “two”, “four”}, and a target string, e.g. “fouroneone”, return true if the target string is composed (by concatenation) of elements from the set.   
-
-// recrusiveBacktrack(target, arr, index){
-  if target empty return true;
-  // oneone
+  private static StringBuilder result =new StringBuilder();
   
-  For each element in array, 
-    if target start with element, 
-      recursivielyCall(target-elmenet,arr,index+1)
-      
-      recursivelyCall(target, arr, index+1);
+  
+  private String myGrep(String matchingString, String srcFolder) {
+	  File file = new File(srcFolder);
+	  // recursively iterate over all the files with the directory.
+	  try {
+		recursivelyMatch(file,matchingString);
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+	  return result.toString();
+  }
 
 
-
+private void recursivelyMatch(File file, String matchingString) throws IOException {
+	if(file.isDirectory()) {
+		File[] listOfFiles = file.listFiles();
+		for(File eachFile : listOfFiles)
+				recursivelyMatch(eachFile,matchingString);
+	}else {
+		BufferedReader reader = null;
+		try {
+			reader = new BufferedReader(new FileReader(file));
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String line = null;
+		int lineNumber = 1;
+		while((line = reader.readLine()) != null) {
+			if(line.contains(matchingString)) {
+				result.append(file.getAbsolutePath());
+				result.append(":");
+				result.append(lineNumber);
+				result.append("\t");
+				result.append(line);
+				result.append("\n");
+			}
+			lineNumber++;
+		}
+		
+	}
 }
-“fouroneone” -> true
-“onecat” -> true
-“fouron” -> false
-“twone” -> false
-// fouroneone
-// can take 1 element more than once.
-// if none elements matches stop. 
-// if string is empty, return true.
-// n elements in array, each entry size m(target string). / n*m total compares.
-// Recusive backtrack solution.
-
-
- */
+  
+}
