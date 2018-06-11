@@ -2,7 +2,7 @@ package com.leetcode.medium.backtrack;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// https://leetcode.com/explore/interview/card/top-interview-questions-medium/109/backtracking/794/
 class GenerateParanthesis {
 	
 	public static void main(String[] args) {
