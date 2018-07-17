@@ -1,10 +1,18 @@
 package com.leetcode.hard;
 
+enum Color{
+	BLUE,
+	RED,
+	GREEN
+}
+
+
 public class MedianOfTwoSortedArrays {
 
 	 public double findMedianSortedArrays(int[] nums1, int[] nums2) {
 	        if(nums1.length > nums2.length)
 	            return findMedianSortedArrays(nums2,nums1);
+	        //Color color= Color.BLUE;
 	        int m = nums1.length;
 	        int n = nums2.length;
 	        int lo = 0;
@@ -21,11 +29,11 @@ public class MedianOfTwoSortedArrays {
 	            if(maxLeftX <= minRightY && maxLeftY <=minRightX){
 	                // if total number of is even, find the average of max of left, and min of right. 
 	                if((m+n)%2 == 0){
-	                    return (Math.max(maxLeftX,maxLeftY)+ Math.max(minRightX,minRightY))/2;
+	                    return (double)(Math.max(maxLeftX,maxLeftY)+ Math.min(minRightX,minRightY))/2;
 	                }
 	                //else return max of 2 lefts.
 	                else
-	                    return Math.max(maxLeftX,maxLeftY);
+	                    return (double)Math.max(maxLeftX,maxLeftY);
 	            }
 	            else if(maxLeftX > minRightY)
 	            // if partition element in nums1 is too big than min elemnt in right sub array of nums2. Go Left.
@@ -42,8 +50,8 @@ public class MedianOfTwoSortedArrays {
 	
 	public static void main(String[] args) {
 		MedianOfTwoSortedArrays median = new MedianOfTwoSortedArrays();
-		int[] nums1 = {2};
-		int[] nums2 = {};
+		int[] nums1 = {1,2};
+		int[] nums2 = {3,4};
 		System.out.println(median.findMedianSortedArrays(nums1, nums2));
 	}
 

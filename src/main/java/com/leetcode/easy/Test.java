@@ -2,8 +2,10 @@ package com.leetcode.easy;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.PriorityQueue;
 import java.util.Queue;
 
 
@@ -102,8 +104,20 @@ public class Test {
     }
     
     public static void main(String[] args) throws IOException {
-    	Solution3 solution3 = new Solution3();
+    	/*Solution3 solution3 = new Solution3();
     	solution3.subsets(new int[] {1,2,3});
+    	*/
+    	
+    	PriorityQueue<Integer> maxPQ = new PriorityQueue<>(/*Collections.reverseOrder()*/);
+    	
+    	for(int i = 1 ; i < 10 ; i++) {
+    		if(maxPQ.size() == 3 && i > maxPQ.peek()) {
+    			System.out.println("Element Removed" + maxPQ.remove());
+    		}
+    		maxPQ.add(i);
+    	}
+    	while(!maxPQ.isEmpty())
+    		System.out.println(maxPQ.poll());
     }
     
     static class Solution3 {
