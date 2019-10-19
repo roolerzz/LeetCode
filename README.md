@@ -1,2 +1,2 @@
 # LeetCode
-ONE CHANGE.
+FIRST CHANGE.
