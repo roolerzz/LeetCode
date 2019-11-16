@@ -11,6 +11,8 @@ public class PathSumIII {
         Node left, right;
     }
 
+
+    // Time complexity O(Nlog(N)) for tree with average depth of logN. Otherwise in worst case, O(N^2).
     public List<List<Integer>> findAllPaths(Node root, int sum){
         List<List<Integer>> result = new ArrayList<>();
         ArrayList<Integer> buffer = new ArrayList<>();
