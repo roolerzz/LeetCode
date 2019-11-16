@@ -1,9 +1,5 @@
 package com.leetcode.hard;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.Stack;
-
 //https://leetcode.com/problems/trapping-rain-water/description/
 public class TrappingRainWater {
 
