@@ -3,6 +3,8 @@ package com.leetcode.easy;
 import java.util.Arrays;
 
 //https://leetcode.com/problems/fibonacci-number/
+// Time complexity of vanilla recursive solutions is O(Golden_ratio ^ n) tighter bound. Sometime also said as O(2^n)
+// https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/
 public class NthFibonacciNumber {
 
     public int nthFiboRec(int n) {

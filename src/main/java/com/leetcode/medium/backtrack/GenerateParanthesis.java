@@ -34,7 +34,9 @@ class GenerateParanthesis {
       arr[currIdx] = ')';
       generateBacktrack(result, left, right+1, arr, n, currIdx+1);
   }
-    /*  private void backtrack(String str, int open, int close, int max,  List<String> result){
+
+  // Attempt I
+      private void backtrack(String str, int open, int close, int max,  List<String> result){
         if(str.length() == (2*max))
         {
             result.add(str);
@@ -46,5 +48,5 @@ class GenerateParanthesis {
             if(close < open)
                 backtrack(str + ")" , open, close+1, max, result);
         }
-    }*/
+    }
 }

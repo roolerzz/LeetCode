@@ -1,9 +1,6 @@
 package com.leetcode.medium.backtrack;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 
 //https://leetcode.com/explore/interview/card/top-interview-questions-medium/109/backtracking/795/
@@ -52,4 +49,56 @@ public class Permutations {
 	        }
 	    }
 
+
+//	Write a method to compute all permutations of a string. CTCI 8.4
+	    public Queue<String> permute2019(String str) {
+			if(str == null ) return null;
+			Queue<String> results = new ArrayDeque<>();
+			if (str.length() == 0)  {
+				results.add("");
+				return results;
+			}
+			recPermute2019(str, 0, results);
+	    	return results;
+		}
+
+		private void recPermute2019(String str, int pos, Queue<String> result){
+	    	if(pos == str.length()) {
+	    		result.add("");
+	    		return;
+			}
+	    	recPermute2019(str, pos+1, result);
+			char ch = str.charAt(pos);
+			insertAtAllPos(result, ch);
+		}
+
+		public Queue<String> permuteIteratively2019(String str) {
+	    	if(str == null) return null;
+	    	Queue<String> results = new ArrayDeque<>();
+	    	results.add("");
+			for(int i = 0 ; i < str.length(); i++) {
+				insertAtAllPos(results, str.charAt(i));
+			}
+			return results;
+		}
+
+		private void insertAtAllPos(Queue<String> res, char ch){
+	    	int resultSize = res.size();
+	    	for(int i = 0 ; i < resultSize; i++) {
+	    		String front = res.remove();
+	    		for(int j = 0 ; j <= front.length(); j++) {
+					StringBuilder sb = new StringBuilder(front);
+					sb.insert(j, ch);
+					res.add(sb.toString());
+				}
+			}
+		}
+
+  public static void main(String[] args) {
+    Permutations p = new Permutations();
+    Queue<String> recRes = p.permute2019("234");
+	  System.out.println(recRes);
+	  Queue<String> iterRes = p.permuteIteratively2019("234");
+    System.out.println(iterRes);
+  }
 }
