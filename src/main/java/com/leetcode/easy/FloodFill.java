@@ -1,7 +1,9 @@
 package com.leetcode.easy;
 
+import java.util.ArrayDeque;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Queue;
 
 //https://leetcode.com/problems/flood-fill/
 // CTCI 8.6
@@ -12,9 +14,37 @@ public class FloodFill {
       int[][] colors = new int[3][3];
       f.fillPaint(colors);
       f.print2Dmatrix(colors);
-      f.paintFill(colors, 2,2,5);
+      f.paintFillBFS(colors, 2,2,5);
       f.print2Dmatrix(colors);
   }
+
+    public void paintFillBFS(int[][] colors, int i, int j, int colorToFill) {
+        if (colors == null ) return;
+        if(!isValidIdx(colors,i,j)) return ;
+        HashSet<Pair> uniqueIdx = new HashSet<>();
+        Queue<Pair> queue = new ArrayDeque<>();
+        Pair start = new Pair(i,j);
+        queue.add(start);
+        uniqueIdx.add(start);
+        int existingVal = colors[i][j];
+        while(!queue.isEmpty()){
+            Pair p = queue.remove();
+            colors[p.i][p.j] = colorToFill;
+            validateAndAddToQueue(colors, p.i+1, p.j, existingVal, queue, uniqueIdx);
+            validateAndAddToQueue(colors, p.i, p.j-1, existingVal, queue, uniqueIdx);
+            validateAndAddToQueue(colors, p.i, p.j+1, existingVal, queue, uniqueIdx);
+            validateAndAddToQueue(colors, p.i-1, p.j, existingVal, queue, uniqueIdx);
+        }
+    }
+
+    private void validateAndAddToQueue(int[][] colors, int i, int j, int existingVal, Queue<Pair> queue, HashSet<Pair> uniqueIdx){
+      Pair pair = new Pair(i,j);
+      if(isValidIdx(colors,i,j) && colors[i][j] == existingVal && !uniqueIdx.contains(pair)){
+          queue.add(pair);
+          uniqueIdx.add(pair);
+      }
+    }
+
 
     public void paintFill(int[][] colors, int i, int j, int colorToFill) {
         if (colors == null ) return;
