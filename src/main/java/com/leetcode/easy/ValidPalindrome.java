@@ -22,6 +22,7 @@ public class ValidPalindrome {
     // In case of invalid character, its gonna have default int values in the array of 0.
     // for values 0-9, we assign them value in the array 1-10,
     // for values a-z and A-Z, we assign them values 11-36.
+    // https://leetcode.com/problems/valid-palindrome/discuss/39993/3ms-java-solution(beat-100-of-java-solution)
     public boolean isPalindrome(String s) {
         int[] charMap = new int[256];
         for(int i = 0 ; i< 10 ; i++) {
