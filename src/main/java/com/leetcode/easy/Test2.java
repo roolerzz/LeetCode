@@ -2,6 +2,7 @@ package com.leetcode.easy;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class Test2 {
 
@@ -31,13 +32,30 @@ public class Test2 {
 //      System.out.print("One Character: ");
 //      System.out.println((char)one);
 
-      int[][] arr = {{0,5},{3,7},{1,2}};
+//      int[][] arr = {{0,5},{3,7},{1,2}};
+//      int[][] arr = {{}};
+//      int[] arr = new int[2];
+      int[] arr = {};
+      int[] arr2 = new int[0];
+      int[] nums=null;
+      System.out.println(Arrays.toString(arr2));
+      PriorityQueue<int[]> minPQ = new PriorityQueue<>();
+      int[][] res = new int[3][3];
+      minPQ.toArray(res);
+      int a[] = new int[]{-1,-1};
+      int b[] = new int[]{3,3};
+
+      int x = Math.abs(a[1]-0);
+
+
+      //int distA = (Math.sqrt(Math.pow(Math.abs(a[1]-0), 2) + Math.pow(Math.abs(a[0]-0),2)));
+      //int distB = (Math.sqrt(Math.pow(Math.abs(b[1]-0), 2) + Math.pow(Math.abs(b[0]-0),2)));
 //      Arrays.sort(arr, (a1, a2) -> a1[0]-a2[0]);
 //      Arrays.sort(arr, Comparator.comparingInt(a -> a[0]));
-        for(int[] inArr : arr) {
-            System.out.print(inArr[0] + " : ");
-            System.out.println(inArr[1]);
-        }
+//        for(int[] inArr : arr) {
+//            System.out.print(inArr[0] + " : ");
+//            System.out.println(inArr[1]);
+//        }
 
 //      for(int i  = 0 ; i < arr.length; i++ ) {
 //          System.out.println();
