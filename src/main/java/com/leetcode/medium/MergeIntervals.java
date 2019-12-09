@@ -26,6 +26,8 @@ public class MergeIntervals {
                 intList.add(new Interval(intervals[i][0],intervals[i][1]));
             }
 
+
+//            Collections.sort()
 //          Collections.sort(intList,(i1, i2) -> i1.start-i2.start);
             Collections.sort(intList, Comparator.comparingInt(value -> value.start));
 

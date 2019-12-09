@@ -5,9 +5,25 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class Test2 {
+    private static void printArray(int[][] intervals){
+        for(int[] intr : intervals){
+            System.out.println(intr[0] + " : "  +intr[1]);
+        }
+    }
+
 
   public static void main(String[] args) {
-    //
+
+        int[][] intervals = new int[][]{{10,15},{1,4},{9,15},{2,5}};
+        printArray(intervals);
+        Arrays.sort(intervals, (a,b) -> a[0]-b[0]);
+        printArray(intervals);
+
+//        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
+
+
+
+      //
 //      char zero = '0';
 //      char one = '1';
 //
@@ -35,17 +51,17 @@ public class Test2 {
 //      int[][] arr = {{0,5},{3,7},{1,2}};
 //      int[][] arr = {{}};
 //      int[] arr = new int[2];
-      int[] arr = {};
-      int[] arr2 = new int[0];
-      int[] nums=null;
-      System.out.println(Arrays.toString(arr2));
-      PriorityQueue<int[]> minPQ = new PriorityQueue<>();
-      int[][] res = new int[3][3];
-      minPQ.toArray(res);
-      int a[] = new int[]{-1,-1};
-      int b[] = new int[]{3,3};
-
-      int x = Math.abs(a[1]-0);
+//      int[] arr = {};
+//      int[] arr2 = new int[0];
+//      int[] nums=null;
+//      System.out.println(Arrays.toString(arr2));
+//      PriorityQueue<int[]> minPQ = new PriorityQueue<>();
+//      int[][] res = new int[3][3];
+//      minPQ.toArray(res);
+//      int a[] = new int[]{-1,-1};
+//      int b[] = new int[]{3,3};
+//
+//      int x = Math.abs(a[1]-0);
 
 
       //int distA = (Math.sqrt(Math.pow(Math.abs(a[1]-0), 2) + Math.pow(Math.abs(a[0]-0),2)));
