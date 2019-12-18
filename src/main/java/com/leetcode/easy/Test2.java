@@ -14,18 +14,18 @@ public class Test2 {
 
   public static void main(String[] args) {
 
-        int[][] intervals = new int[][]{{10,15},{1,4},{9,15},{2,5}};
-        printArray(intervals);
-        Arrays.sort(intervals, (a,b) -> a[0]-b[0]);
-        printArray(intervals);
+//        int[][] intervals = new int[][]{{10,15},{1,4},{9,15},{2,5}};
+//        printArray(intervals);
+//        Arrays.sort(intervals, (a,b) -> a[0]-b[0]);
+//        printArray(intervals);
 
 //        Arrays.sort(intervals, Comparator.comparingInt(a -> a[0]));
 
 
 
       //
-//      char zero = '0';
-//      char one = '1';
+      char zero = '0';
+      char one = '1';
 //
 //      System.out.print("Zero Character: ");
 //      System.out.println(zero);
@@ -36,18 +36,25 @@ public class Test2 {
 //      System.out.print("One Integer: ");
 //      System.out.println((int)one);
 //
-//      int intZero = 0;
-//      int intOne = 1;
-//
-//      System.out.print("Zero Integer: ");
-//      System.out.println(intZero);
-//      System.out.print("One Integer: ");
-//      System.out.println(intOne);
-//      System.out.print("Zero Character: ");
-//      System.out.println((char)zero);
-//      System.out.print("One Character: ");
-//      System.out.println((char)one);
+      int intZero = 0;
+      int intOne = 1;
 
+      System.out.print("Zero Integer: ");
+      System.out.println(intZero);
+      System.out.print("One Integer: ");
+      System.out.println(intOne);
+      System.out.print("Zero Integer casted to character: ");
+      System.out.println((char)intZero);
+      System.out.print("One Integer casted to character: ");
+      System.out.println((char)intOne);
+      System.out.print("Zero Character: ");
+      System.out.println(zero);
+      System.out.print("One Character: ");
+      System.out.println(one);
+      System.out.print("Zero Character casted to Int: ");
+      System.out.println((int)zero);
+      System.out.print("One Character casted to Integer: ");
+      System.out.println((int)one);
 //      int[][] arr = {{0,5},{3,7},{1,2}};
 //      int[][] arr = {{}};
 //      int[] arr = new int[2];
