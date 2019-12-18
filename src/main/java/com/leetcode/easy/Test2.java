@@ -36,6 +36,11 @@ public class Test2 {
 //      System.out.print("One Integer: ");
 //      System.out.println((int)one);
 //
+
+    String s1 = "";
+    String s2 = null;
+    System.out.println(s2.length());
+
       int intZero = 0;
       int intOne = 1;
 
