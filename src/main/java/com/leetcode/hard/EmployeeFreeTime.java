@@ -1,7 +1,5 @@
 package com.leetcode.hard;
 
-import sun.jvm.hotspot.utilities.Interval;
-
 import java.util.*;
 
 public class EmployeeFreeTime {
