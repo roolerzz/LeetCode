@@ -23,14 +23,26 @@ public class Test2 {
         return sb;
     }
 
+
   public static void main(String[] args) {
 
-        StringBuilder sb = new StringBuilder("[");
-        sb.append("1,null,null,");
-        sb = trimTrailingNulls(sb);
-        sb.deleteCharAt(sb.length()-1);
-        sb.append("]");
+
+       StringBuilder sb = new StringBuilder();
+//        sb.append((char)('a'+1));
+      sb.append('a'+1);
         System.out.println(sb.toString());
+
+
+      StringBuilder sb2 = new StringBuilder();
+      sb2.append(1 + 'a');
+      System.out.println(sb2.toString());
+
+      //        StringBuilder sb = new StringBuilder("[");
+//        sb.append("1,null,null,");
+//        sb = trimTrailingNulls(sb);
+//        sb.deleteCharAt(sb.length()-1);
+//        sb.append("]");
+//        System.out.println(sb.toString());
 //        System.out.println("8".compareTo("3"));
 //      System.out.println("3".compareTo("8"));
 //      System.out.println("3".compareTo("3"));
