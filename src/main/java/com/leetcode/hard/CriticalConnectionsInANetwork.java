@@ -5,6 +5,7 @@ import java.util.*;
 // https://leetcode.com/problems/critical-connections-in-a-network/
 // https://www.youtube.com/watch?v=V6kRqdtM_Uk
 // https://www.youtube.com/watch?v=aZXi1unBdJA
+// This can also be called as Finding Bridges(extension problems Articulation points) in a graph.
 public class CriticalConnectionsInANetwork {
 
     int id;
