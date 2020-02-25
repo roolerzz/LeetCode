@@ -1,12 +1,5 @@
 package com.leetcode.hard;
 
-enum Color{
-	BLUE,
-	RED,
-	GREEN
-}
-
-
 public class MedianOfTwoSortedArrays {
 
 	 public double findMedianSortedArrays(int[] nums1, int[] nums2) {
